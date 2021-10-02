@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="styling.css">
     <script src="js/parser.js"></script>
     <script src="js/index.js"></script>
+    <meta name="viewport" content="width=device-width" />
   </head>
 <body>
 
@@ -17,44 +18,46 @@
 
   <section>
     <form onsubmit="submitProposition(this); return false;">
-      Proposition <br><input type="text" id="proposition"/>
+      <h3>Proposition</h3><input type="text" id="proposition"/>
       <input type="submit" value="Generate Truth Table"/>
     </form>
 
-    <button id="p" type="button" onclick="appendProposition(this)">P</button>
-    <button id="q" type="button" onclick="appendProposition(this)">Q</button>
-    <button id="r" type="button" onclick="appendProposition(this)">R</button>
-    <button id="s" type="button" onclick="appendProposition(this)">S</button>
-    <button id="t" type="button" onclick="appendProposition(this)">T</button>
-    <button id="u" type="button" onclick="appendProposition(this)">U</button>
+    <section>
+      <button id="p" type="button" onclick="appendProposition(this)">P</button>
+      <button id="q" type="button" onclick="appendProposition(this)">Q</button>
+      <button id="r" type="button" onclick="appendProposition(this)">R</button>
+      <button id="s" type="button" onclick="appendProposition(this)">S</button>
+      <button id="t" type="button" onclick="appendProposition(this)">T</button>
+      <button id="u" type="button" onclick="appendProposition(this)">U</button>
+    </section>
 
-    <button id="delete" type="button" onclick="clearProposition(this)">← Backspace</button>
-    <button id="clear" type="button" onclick="clearProposition(this)">Clear</button>
+    <section>
+      <button id="conjunction" type="button" onclick="appendProposition(this)">∧</button>
+      <button id="disjunction" type="button" onclick="appendProposition(this)">∨</button>
+      <button id="negation" type="button" onclick="appendProposition(this)">¬</button>
+      <button id="implication" type="button" onclick="appendProposition(this)">→</button>
+      <button id="equivalence" type="button" onclick="appendProposition(this)">⟷</button>
+    </section>
 
-    <button id="conjunction" type="button" onclick="appendProposition(this)">∧</button>
-    <button id="disjunction" type="button" onclick="appendProposition(this)">∨</button>
-    <button id="negation" type="button" onclick="appendProposition(this)">¬</button>
-
-    <button id="left_bracket" type="button" onclick="appendProposition(this)">(</button>
-    <button id="right_bracket" type="button" onclick="appendProposition(this)">)</button>
-
-    <button id="implication" type="button" onclick="appendProposition(this)">→</button>
-    <button id="equivalence" type="button" onclick="appendProposition(this)">⟷</button>
-
-
+    <section>
+      <button id="left_bracket" type="button" onclick="appendProposition(this)">(</button>
+      <button id="right_bracket" type="button" onclick="appendProposition(this)">)</button>
+      <button id="delete" type="button" onclick="clearProposition(this)">← Backspace</button>
+      <button id="clear" type="button" onclick="clearProposition(this)">Clear</button>
+    </section>
 
   </section>
 
   <hr class="rounded">
 
-  <section>
-    <p>Truth Table</p>
+  <section id="results">
   </section>
 
   <hr class="rounded">
 
   <section>
-    <p>Developed by Brodie Peberdy / Visit my <a href="https://github.com/brodiepeberdy" target="_blank">GitHub</a>!</p>
+    <p>Developed by <a href="https://www.linkedin.com/in/brodie-peberdy/" target="_blank">Brodie Peberdy</a>.</p>
+    <p>Visit my <a href="https://github.com/brodiepeberdy" target="_blank">GitHub</a>!</p>
   </section>
 
 
