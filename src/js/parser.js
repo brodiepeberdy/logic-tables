@@ -1,5 +1,5 @@
 class Parser {
-  proposition;
+  proposition; // Proposition entered by the user, cleaned of whitespace.
   queue = [];
 
   // Removes any whitespace from the proposition.
@@ -42,7 +42,7 @@ class Parser {
       this.queue.push(operator);
     }
     else {
-      console.log(expression)
+      console.log(expression);
       this.queue.push(expression);
     }
 
@@ -100,7 +100,7 @@ class Parser {
       var values = truth_values[t];
       for (var q = 0; q < this.queue.length; q++) {
         elements = this.queue[q].split(/([∧∨→⟷])/g).filter(Boolean);
-        console.log(elements)
+
 
         temp_result = null;
         temp_op = null;
@@ -117,6 +117,10 @@ class Parser {
                 result = !result;
               }
               if (temp_result == null) {
+                // If the proposition is an atomic single-variable expression, e.g. '(A)'.
+                if (variables.includes(elements[0]) && elements.length == 1) {
+                  truth_results.push(result)
+                }
                 temp_result = result;
               }
               else if (temp_op !== null) {
@@ -135,7 +139,6 @@ class Parser {
                 truth_results.push(temp_result);
                 temp_op = null;
               }
-
             }
             catch(err) {
               console.log("Looks like something went wrong!");
@@ -143,8 +146,12 @@ class Parser {
           }
           else if (operators.includes(elements[j])){
             try {
-              temp_op = elements[j];
-              truth_results.push(temp_op);
+              if (elements.length == 1) {
+                truth_results.push(elements[j]);
+              }
+              else {
+                temp_op = elements[j];
+              }
             }
             catch(err) {
               console.log("Looks like something went wrong!");
@@ -167,29 +174,38 @@ class Parser {
         else if (temp_result == null) {
           temp_result = truth_results[v];
         }
-        else {
+        else if (temp_op !== null) {
           if (temp_op == "∧") {
-            temp_result = temp_result && temp_results[v];
+            temp_result = temp_result && truth_results[v];
           }
           else if (temp_op == "∨") {
-            temp_result = temp_result || temp_results[v];
+            temp_result = temp_result || truth_results[v];
           }
           else if (temp_op == "→") {
-            temp_result = (!temp_result || temp_results[v]);
+            temp_result = (!temp_result || truth_results[v]);
           }
           else if (temp_op == "⟷") {
-            temp_result = temp_result === temp_results[v];
+            temp_result = temp_result === truth_results[v];
           }
+          temp_op = null;
+        }
+      }
+      else if (operators.includes(truth_results[v])){
+        try {
+          temp_op = truth_results[v];
+        }
+        catch(err) {
+          console.log("Looks like something went wrong!");
         }
       }
     }
 
 
 
+
     for (var v = 0; v < truth_values.length; v++) {
       truth_values[v]["result"] = final[v]
     }
-    console.log(truth_values)
     return truth_values;
   }
 }

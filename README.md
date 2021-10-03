@@ -1,1 +1,1 @@
-# logic-tables
+# Truth Table Generator for Propositional Logic
