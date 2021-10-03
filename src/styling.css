@@ -23,6 +23,18 @@ button {
     font-weight: Bold;
     cursor:pointer;
 }
+.searchBar {
+  font-size: 1em;
+  border: 1px solid grey;
+  background: WhiteSmoke;
+}
+.searchButton {
+  background: SlateGrey;
+  color: white;
+  font-size: 1em;
+  border: 1px solid grey;
+  cursor: pointer;
+}
 section {
   margin-bottom: 5px;
 }
@@ -32,7 +44,7 @@ table {
   border-collapse: collapse;
 }
 th, td {
-  text-align: left;
+  text-align: center;
   padding: 10px;
 }
 tr:nth-child(even) {
